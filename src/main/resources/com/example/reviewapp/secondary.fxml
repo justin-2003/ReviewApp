@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="399.0" prefWidth="589.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.PrimaryPage">
    <children>
@@ -30,6 +32,13 @@
               </menus>
             </MenuBar>
          </top>
+         <left>
+            <VBox prefHeight="376.0" prefWidth="138.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="141.0" style="-fx-background-color: #add8e6;" text="Top Reviews" textFill="WHITE" />
+               </children>
+            </VBox>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
