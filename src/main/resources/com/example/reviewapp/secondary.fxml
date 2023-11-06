@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="399.0" prefWidth="589.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
+<AnchorPane prefHeight="399.0" prefWidth="589.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
    <children>
       <VBox prefHeight="399.0" prefWidth="121.0" style="-fx-background-color: #ffff;">
          <children>
@@ -17,7 +17,7 @@
                   <Image url="@images.jpeg" />
                </image>
             </ImageView>
-            <Button fx:id="home_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: #ffff;" text="Home" />
+            <Button fx:id="home_btn" mnemonicParsing="false" prefHeight="60.0" prefWidth="140.0" style="-fx-background-color: #ffff;" text="Home" textFill="#0353f2" />
             <Button fx:id="account_btn" mnemonicParsing="false" onAction="#AccountButtonClick" prefHeight="69.0" prefWidth="140.0" style="-fx-background-color: #ffff;" text="Account" />
             <Button fx:id="reviews_btn" mnemonicParsing="false" onAction="#ReviewButtonClick" prefHeight="68.0" prefWidth="142.0" style="-fx-background-color: #ffff;" text="Reviews" />
             <Button fx:id="logout_btn" mnemonicParsing="false" onAction="#onlogoutButtonClick" prefHeight="76.0" prefWidth="138.0" style="-fx-background-color: #ffff;" text="Logout" />
