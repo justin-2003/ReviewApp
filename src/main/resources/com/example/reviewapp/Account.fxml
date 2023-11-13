@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Account">
+<AnchorPane prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Account">
    <children>
       <VBox prefHeight="400.0" prefWidth="107.0" style="-fx-background-color: #ffff;">
          <children>
@@ -27,5 +27,12 @@
          <font>
             <Font size="24.0" />
          </font></Label>
+      <ImageView fitHeight="45.0" fitWidth="37.0" layoutX="166.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@email.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="209.0" layoutY="184.0" text="Email:" textFill="WHITE" />
+      <Label layoutX="260.0" layoutY="184.0" prefHeight="17.0" prefWidth="161.0" />
    </children>
 </AnchorPane>
