@@ -101,6 +101,14 @@ public class loginController {
         stage.close();
     }
 
+    public void registerButtonCllick(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     // Get User From Database
     private boolean getUser(String user, String pass) throws ExecutionException, InterruptedException {
 
