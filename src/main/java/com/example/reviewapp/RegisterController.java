@@ -38,6 +38,8 @@ public class RegisterController {
     @FXML
     private TextField username_tf;
     @FXML
+    private TextField email_tf;
+    @FXML
     private PasswordField password_tf;
     @FXML
     private Button cancel_btn;
