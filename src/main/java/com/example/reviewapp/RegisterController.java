@@ -58,13 +58,14 @@ public class RegisterController {
             // Check login credentials
             String user = username_tf.getText();
             String pass = password_tf.getText();
+            String email = email_tf.getText();
 
             if (!getUser(user, pass)) {
                 loginlabel.setText("Registration Failed: Try a different username");
             }
 
             else {
-                createUser(user, pass);
+                createUser(user, pass, email);
                 Parent root = FXMLLoader.load(getClass().getResource("secondary.fxml"));
                 stage = (Stage)((Node)e.getSource()).getScene().getWindow();
                 scene = new Scene(root);
@@ -87,10 +88,11 @@ public class RegisterController {
         stage.show();
     }
 
-    private void createUser(String user, String pass) throws ExecutionException, InterruptedException {
+    private void createUser(String user, String pass, String email) throws ExecutionException, InterruptedException {
         Map<String, Object> docData = new HashMap<>();
         docData.put("Username", user);
         docData.put("Password", pass);
+        docData.put("Email" , email);
 
         ApiFuture<WriteResult> future = fstore.collection("Users").document().set(docData);
         System.out.println("Update time : " + future.get().getUpdateTime());
@@ -101,7 +103,7 @@ public class RegisterController {
         ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("Username", user).get();
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
-        if (documents.size() > 0) {
+        if(documents.size() > 0) {
             return false;
         }
 

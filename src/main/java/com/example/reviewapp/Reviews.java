@@ -1,5 +1,7 @@
 package com.example.reviewapp;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.WriteResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+
+import static com.example.reviewapp.ReviewApplication.fstore;
 
 public class Reviews {
     @FXML
@@ -35,6 +43,8 @@ public class Reviews {
     private Scene scene;
     private Parent root;
 
+    static List<reviewClass> reviews = new ArrayList<>();
+
     public void onlogoutButtonClick(ActionEvent e){
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         stage.close();
@@ -54,5 +64,26 @@ public class Reviews {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void onUploadButtonClick(ActionEvent e) throws ExecutionException, InterruptedException {
+        String title = title_txt.getText();
+        String reviewText = review_txt.getText();
+
+        if (!title.isEmpty() && !reviewText.isEmpty()) {
+            Map<String, Object> reviews = new HashMap<>();
+            reviews.put("Title", title);
+            reviews.put("Description", reviewText);
+
+            ApiFuture<WriteResult> future = fstore.collection("reviews").document().set(reviews);
+            System.out.println("Update time : " + future.get().getUpdateTime());
+
+            try {
+                HomeButtonClick(e);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        } else {
+            error_label.setText("Please enter both title and review text.");
+        }
     }
 }

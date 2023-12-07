@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="399.0" prefWidth="589.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
+<AnchorPane prefHeight="376.0" prefWidth="564.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
    <children>
       <VBox prefHeight="399.0" prefWidth="121.0" style="-fx-background-color: #ffff;">
          <children>
@@ -24,26 +24,16 @@
             <Button fx:id="logout_btn" mnemonicParsing="false" onAction="#onlogoutButtonClick" prefHeight="76.0" prefWidth="138.0" style="-fx-background-color: #ffff;" text="Logout" />
          </children>
       </VBox>
-      <Label layoutX="282.0" layoutY="14.0" prefHeight="49.0" prefWidth="175.0" text="WELCOME" textFill="#f8f6f6">
+      <Label alignment="CENTER" layoutX="278.0" layoutY="14.0" prefHeight="38.0" prefWidth="131.0" text="WELCOME" textFill="WHITE">
          <font>
-            <Font size="24.0" />
+            <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="192.0" layoutY="69.0" prefHeight="23.0" prefWidth="127.0" text="Your Reviews:" textFill="#fcf8f8">
+      <Label layoutX="314.0" layoutY="52.0" text="Reviews" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font size="17.0" />
          </font>
       </Label>
-      <ImageView fitHeight="29.0" fitWidth="34.0" layoutX="156.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@icon-review.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="204.0" layoutY="95.0" text="Username" textFill="#fcfafa" />
-      <Label layoutX="204.0" layoutY="118.0" text="Title" textFill="#fffafa" />
-      <TextArea layoutX="185.0" layoutY="140.0" prefHeight="120.0" prefWidth="340.0" />
-      <Button layoutX="355.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Next Review" />
-      <Button layoutX="205.0" layoutY="325.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Previous Review" />
-      <Label fx:id="error_label" layoutX="222.0" layoutY="278.0" prefHeight="29.0" prefWidth="269.0" textFill="#f8f3f3" />
+      <TextArea fx:id="outputField" editable="false" layoutX="121.0" layoutY="107.0" prefHeight="292.0" prefWidth="446.0" style="-fx-background-color: #263F73;" wrapText="true" />
    </children>
 </AnchorPane>
