@@ -1,34 +1,91 @@
 package com.example.reviewapp;
-
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
+import com.google.firebase.database.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
-public class HomePage {
+public class HomePage implements Initializable {
+
     @FXML
-    private Button home_btn;
-    @FXML
-    private Button account_btn;
-    @FXML
-    private Button reviews_btn;
-    @FXML
-    private Button logout_btn;
-    @FXML
-    private TextField username_tf;
-    @FXML
-    private Label username;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    private TextArea outputField;
+        @FXML
+        private Button logout_btn;
+        @FXML
+        private Stage stage;
+        private Scene scene;
+        private Parent root;
+        @FXML
+        private ListView<String> listView;
+        private boolean key;
+        private reviewClass reviews;
+
+    private ObservableList<reviewClass> listOfUsers = FXCollections.observableArrayList();
+    public ObservableList<reviewClass> getListOfUsers() {
+        return listOfUsers;
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+       readFirebase();
+    }
+    public boolean readFirebase()
+    {
+        key = false;
+
+        //asynchronously retrieve all documents
+        ApiFuture<QuerySnapshot> future =  ReviewApplication.fstore.collection("reviews").get();
+        // future.get() blocks on response
+        List<QueryDocumentSnapshot> documents;
+        try
+        {
+            documents = future.get().getDocuments();
+            if(documents.size()>0)
+            {
+                System.out.println("Outing....");
+                for (QueryDocumentSnapshot document : documents)
+                {
+                    outputField.setText(outputField.getText() + document.getData().get("Title")+": " +
+                            document.getData().get("Description")+ "\n--------------------------------------------------------------------------------------\n");
+
+                    System.out.println(document.getId() + " => " + document.getData().get("Title"));
+                    reviews  = new reviewClass(String.valueOf(document.getData().get("Title")),
+                            document.getData().get("Description").toString());
+                    listOfUsers.add(reviews);
+                }
+            }
+            else
+            {
+                System.out.println("No data");
+            }
+            key=true;
+
+        }
+        catch (InterruptedException | ExecutionException ex)
+        {
+            ex.printStackTrace();
+        }
+        return key;
+    }
+
+
 
     public void onlogoutButtonClick(ActionEvent e){
         Stage stage = (Stage) logout_btn.getScene().getWindow();
@@ -51,3 +108,4 @@ public class HomePage {
         stage.show();
     }
 }
+

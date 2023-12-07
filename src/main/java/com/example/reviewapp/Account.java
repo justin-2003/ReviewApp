@@ -32,7 +32,7 @@ public class Account {
     @FXML
     private Label errorLabel;
     @FXML
-    private Label emailLabel;
+   public  Label emailLabel;
     @FXML
     private Label no_of_reviewsLabel;
     private Stage stage;
@@ -43,6 +43,10 @@ public class Account {
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         stage.close();
     }
+    public void setUsername(String user) {
+        emailLabel.setText(user);
+    }
+
 
     public void HomeButtonClick(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Secondary.fxml"));
