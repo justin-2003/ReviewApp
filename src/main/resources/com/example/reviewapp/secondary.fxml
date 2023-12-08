@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="376.0" prefWidth="564.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
+<AnchorPane prefHeight="376.0" prefWidth="564.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
    <children>
       <VBox prefHeight="399.0" prefWidth="121.0" style="-fx-background-color: #ffff;">
          <children>
@@ -26,14 +26,19 @@
       </VBox>
       <Label alignment="CENTER" layoutX="278.0" layoutY="14.0" prefHeight="38.0" prefWidth="131.0" text="WELCOME" textFill="WHITE">
          <font>
-            <Font size="26.0" />
+            <Font name="PT Sans" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="314.0" layoutY="52.0" text="Reviews" textFill="WHITE">
+      <Label layoutX="296.0" layoutY="52.0" text="-Reviews-" textFill="#bbdef8">
          <font>
-            <Font size="17.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <TextArea fx:id="outputField" editable="false" layoutX="121.0" layoutY="107.0" prefHeight="292.0" prefWidth="446.0" style="-fx-background-color: #263F73;" wrapText="true" />
+      <ImageView fitHeight="17.0" fitWidth="68.0" layoutX="306.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@review-image.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
