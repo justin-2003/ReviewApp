@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static com.example.reviewapp.ReviewApplication.fstore;
+import static com.example.reviewapp.ReviewApplication.*;
 
 public class Reviews {
     @FXML
@@ -42,8 +44,28 @@ public class Reviews {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private HBox hbox;
+    @FXML
+    private HBox hbox2;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private VBox vbox2;
 
     static List<reviewClass> reviews = new ArrayList<>();
+
+    public void initialize() {
+        hbox.setPrefWidth(screenWidth * 0.3);
+        hbox.setPrefHeight(screenHeight);
+        hbox2.setPrefWidth(screenWidth * 0.7);
+        hbox2.setPrefHeight(screenHeight);
+        hbox2.setLayoutX(hbox.getPrefWidth());
+        vbox.setPrefWidth(screenWidth * 0.3);
+        vbox.setPrefHeight(screenHeight);
+        vbox2.setPrefWidth(hbox2.getPrefWidth() * 0.8);
+        vbox2.setPrefHeight(hbox2.getPrefHeight());
+    }
 
     public void onlogoutButtonClick(ActionEvent e){
         Stage stage = (Stage) logout_btn.getScene().getWindow();
