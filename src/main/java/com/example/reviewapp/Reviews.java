@@ -12,9 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +57,8 @@ public class Reviews {
     private VBox vbox;
     @FXML
     private VBox vbox2;
+    @FXML
+    ImageView img_view;
 
     static List<reviewClass> reviews = new ArrayList<>();
 
@@ -90,11 +97,15 @@ public class Reviews {
     public void onUploadButtonClick(ActionEvent e) throws ExecutionException, InterruptedException {
         String title = title_txt.getText();
         String reviewText = review_txt.getText();
+        String username = User.getUser().getName();
+
+        //String filePath =
 
         if (!title.isEmpty() && !reviewText.isEmpty()) {
             Map<String, Object> reviews = new HashMap<>();
             reviews.put("Title", title);
             reviews.put("Description", reviewText);
+            reviews.put("userName", username);
 
             ApiFuture<WriteResult> future = fstore.collection("reviews").document().set(reviews);
             System.out.println("Update time : " + future.get().getUpdateTime());
@@ -106,6 +117,13 @@ public class Reviews {
             }
         } else {
             error_label.setText("Please enter both title and review text.");
+        }
+    }
+    @FXML
+    protected void showImage() {
+        File file = (new FileChooser()).showOpenDialog(img_view.getScene().getWindow());
+        if (file != null) {
+            img_view.setImage(new Image(file.toURI().toString()));
         }
     }
 }

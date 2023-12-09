@@ -90,20 +90,17 @@ public class HomePage implements Initializable {
                 for (QueryDocumentSnapshot document : documents)
                 {
                     outputField.setText(outputField.getText() + document.getData().get("Title")+": " +
-                            document.getData().get("Description")+ "\n--------------------------------------------------------------------------------------\n");
+                            document.getData().get("Description")+" --" + document.getData().get("userName") +"\n--------------------------------------------------------------------------------------\n");
 
                     System.out.println(document.getId() + " => " + document.getData().get("Title"));
                     reviews  = new reviewClass(String.valueOf(document.getData().get("Title")),
                             document.getData().get("Description").toString());
                     listOfUsers.add(reviews);
                 }
-            }
-            else
-            {
+            }else{
                 System.out.println("No data");
             }
             key=true;
-
         }
         catch (InterruptedException | ExecutionException ex)
         {

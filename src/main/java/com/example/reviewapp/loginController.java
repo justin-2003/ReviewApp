@@ -74,12 +74,12 @@ public class loginController {
             String user = username_tf.getText();
             String pass = password_tf.getText();
 
-
             if (!getUser(user, pass)) {
                 loginlabel.setText("Login Failed: Incorrect Username or Password");
             }
 
             else {
+                User.getUser().setName(user);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Account.fxml"));
                 Parent accountRoot = loader.load();
 

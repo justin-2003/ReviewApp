@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="405.0" prefWidth="601.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Reviews">
+<AnchorPane prefHeight="405.0" prefWidth="601.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Reviews">
    <children>
       <HBox fx:id="hbox" alignment="CENTER" prefHeight="405.0" prefWidth="200.0">
          <children>
@@ -65,7 +65,12 @@
                   </HBox>
                   <VBox fx:id="vbox3" alignment="CENTER" spacing="10.0">
                      <children>
-                        <TextArea fx:id="review_txt" promptText="write review here" />
+                        <TextArea fx:id="review_txt" prefHeight="160.0" prefWidth="400.0" promptText="write review here" />
+                        <ImageView fx:id="img_view" fitHeight="76.0" fitWidth="91.0" onMouseClicked="#showImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@account-icon.png" />
+                           </image>
+                        </ImageView>
                         <Button fx:id="upload_btn" mnemonicParsing="false" onAction="#onUploadButtonClick" prefHeight="26.0" prefWidth="99.0" text="Upload" />
                         <Label fx:id="error_label" alignment="CENTER" prefHeight="26.0" prefWidth="284.0" textFill="#f8f6f6" />
                      </children>

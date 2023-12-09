@@ -85,6 +85,7 @@ public class RegisterController {
             String user = username_tf.getText();
             String pass = password_tf.getText();
             String email = email_tf.getText();
+            User.getUser().setName(user);
 
             if (!getUser(user, pass)) {
                 loginlabel.setText("Registration Failed: Try a different username");
@@ -92,6 +93,7 @@ public class RegisterController {
 
             else {
                 createUser(user, pass, email);
+                User.getUser().setName(username_tf.getText());
                 Parent root = FXMLLoader.load(getClass().getResource("secondary.fxml"));
                 stage = (Stage)((Node)e.getSource()).getScene().getWindow();
                 scene = new Scene(root);
@@ -132,7 +134,6 @@ public class RegisterController {
         if(documents.size() > 0) {
             return false;
         }
-
         else {
             return true;
         }
