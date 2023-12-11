@@ -1,5 +1,7 @@
 package com.example.reviewapp;
 
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-import static com.example.reviewapp.ReviewApplication.screenHeight;
-import static com.example.reviewapp.ReviewApplication.screenWidth;
+import static com.example.reviewapp.ReviewApplication.*;
 
 public class Account {
     @FXML
@@ -33,16 +36,15 @@ public class Account {
     @FXML
     private TextField user_txt;
     @FXML
-    private PasswordField pass_txt;
+    private TextField oldPassword;
+    @FXML
+    private PasswordField newPassword;
     @FXML
     private Label errorLabel;
     @FXML
-   public  Label emailLabel;
-    @FXML
-    private Label no_of_reviewsLabel;
+   public  Label username_txt;
     private Stage stage;
     private Scene scene;
-    private Parent root;
     @FXML
     private HBox hbox;
     @FXML
@@ -51,6 +53,8 @@ public class Account {
     private VBox vbox;
     @FXML
     private VBox vbox2;
+
+
 
 
     public void initialize() {
@@ -63,15 +67,14 @@ public class Account {
         vbox.setPrefHeight(screenHeight);
         vbox2.setPrefWidth(hbox2.getPrefWidth());
         vbox2.setPrefHeight(hbox2.getPrefHeight());
+        username_txt.setText("Welcome, " + User.getUser().getName());
     }
 
     public void onlogoutButtonClick(ActionEvent e){
         Stage stage = (Stage) logout_btn.getScene().getWindow();
         stage.close();
     }
-    public void setUsername(String user) {
-        emailLabel.setText(user);
-    }
+
 
 
     public void HomeButtonClick(ActionEvent e) throws IOException {
@@ -89,7 +92,36 @@ public class Account {
         stage.setScene(scene);
         stage.show();
     }
+    private boolean updatePasswordIfMatch(String user, String oldPassword, String newPassword) throws ExecutionException, InterruptedException {
+        // Create a query to find the document with the specified username and old password
+        Query query = fstore.collection("Users").whereEqualTo("Username", user).whereEqualTo("Password", oldPassword);
 
+        // Execute the query to get the matching documents
+        ApiFuture<QuerySnapshot> querySnapshot = query.get();
+        List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
 
+        // Check if any documents match the query
+        if (!documents.isEmpty()) {
+
+            DocumentReference docRef = documents.get(0).getReference();
+
+            // Update the "Password" field to the new password synchronously
+            ApiFuture<WriteResult> updateFuture = docRef.update("Password", newPassword);
+
+            // Wait for the update operation to complete
+            WriteResult updateResult = updateFuture.get();
+            System.out.println("Password update result: " + updateResult);
+
+            errorLabel.setText("Password changed successfully!!");
+            return true;
+        } else {
+            errorLabel.setText("Password change unsuccessful. Please try again.");
+            return false;
+        }
+    }
+    @FXML
+    private void setChange_btn() throws ExecutionException, InterruptedException {
+        updatePasswordIfMatch(user_txt.getText(),oldPassword.getText(), newPassword.getText());
+    }
 
 }

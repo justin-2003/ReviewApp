@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="newPass_txt" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Account">
+<AnchorPane fx:id="newPass_txt" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.Account">
    <children>
       <HBox fx:id="hbox" alignment="CENTER" prefHeight="400.0" prefWidth="200.0">
          <children>
@@ -32,7 +32,7 @@
       </HBox>
       <HBox fx:id="hbox2" alignment="CENTER" layoutX="200.0" prefHeight="400.0" prefWidth="320.0">
          <children>
-            <VBox fx:id="vbox2" alignment="CENTER" spacing="5.0">
+            <VBox fx:id="vbox2" alignment="CENTER" prefHeight="400.0" prefWidth="283.0" spacing="5.0">
                <children>
                   <Label alignment="CENTER" prefHeight="45.0" prefWidth="149.0" text="Account" textFill="#f5f5f5">
                      <font>
@@ -59,7 +59,8 @@
                                           <Image url="@email.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Email:" textFill="WHITE" />
+                                    <Label text="User:" textFill="WHITE" />
+                                    <Label fx:id="username_txt" prefHeight="17.0" prefWidth="84.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -78,22 +79,26 @@
                   </HBox>
                   <Label prefHeight="17.0" prefWidth="161.0" />
                   <Label text="Change Password" textFill="WHITE" />
-                  <HBox alignment="CENTER" spacing="5.0">
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="269.0" spacing="5.0">
                      <children>
-                        <Label text="Username" textFill="WHITE" />
+                        <Label prefHeight="17.0" prefWidth="71.0" text="Username" textFill="WHITE" />
                         <TextField fx:id="user_txt" prefHeight="26.0" prefWidth="160.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="12.0" prefWidth="283.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="25.0" prefWidth="100.0" text="Old Password" textFill="#f5f5f5" />
+                        <TextField fx:id="oldPassword" prefHeight="25.0" prefWidth="162.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Label text="New Password" textFill="WHITE" />
-                        <PasswordField fx:id="pass_txt" prefHeight="26.0" prefWidth="161.0" />
+                        <Label text="New Password " textFill="WHITE" />
+                        <PasswordField fx:id="newPassword" prefHeight="13.0" prefWidth="161.0" />
                      </children>
                   </HBox>
                   <Label fx:id="errorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="246.0" textFill="WHITE" />
-                  <Button fx:id="change_btn" mnemonicParsing="false" text="Change" />
-                  <Label fx:id="emailLabel" prefHeight="33.0" prefWidth="161.0" />
-                  <Label fx:id="no_of_reviewsLabel" prefHeight="26.0" prefWidth="89.0" />
+                  <Button fx:id="change_btn" mnemonicParsing="false" onAction="#setChange_btn" text="Change" />
                </children>
             </VBox>
          </children>

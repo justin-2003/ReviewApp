@@ -32,8 +32,6 @@ public class RegisterController {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
-
     @FXML
     private Label loginlabel;
     @FXML
@@ -132,10 +130,9 @@ public class RegisterController {
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
         if(documents.size() > 0) {
-            return false;
-        }
-        else {
             return true;
+        }else{
+            return false;
         }
     }
 }

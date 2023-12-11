@@ -31,16 +31,14 @@ import static com.example.reviewapp.ReviewApplication.screenWidth;
 
 public class HomePage implements Initializable {
 
-    @FXML
-    private TextArea outputField;
+        @FXML
+        private TextArea outputField;
         @FXML
         private Button logout_btn;
         @FXML
         private Stage stage;
         private Scene scene;
         private Parent root;
-        @FXML
-        private ListView<String> listView;
         private boolean key;
         private reviewClass reviews;
         @FXML

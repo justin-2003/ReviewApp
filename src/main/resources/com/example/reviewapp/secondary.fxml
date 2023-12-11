@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane1" prefHeight="376.0" prefWidth="564.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
+<AnchorPane fx:id="anchorPane1" prefHeight="399.0" prefWidth="603.0" style="-fx-background-color: #263F73;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.reviewapp.HomePage">
    <children>
       <HBox fx:id="hbox" alignment="CENTER" prefHeight="399.0" prefWidth="142.0">
          <children>
@@ -31,7 +31,7 @@
       </HBox>
       <HBox fx:id="hbox2" alignment="CENTER" layoutX="160.0" prefHeight="399.0" prefWidth="424.0">
          <children>
-            <VBox alignment="CENTER" spacing="15.0">
+            <VBox alignment="CENTER" prefHeight="399.0" prefWidth="443.0" spacing="15.0">
                <children>
                   <Label alignment="CENTER" text="WELCOME" textFill="WHITE">
                      <font>
@@ -48,7 +48,7 @@
                         <Image url="@review-image.png" />
                      </image>
                   </ImageView>
-                  <TextArea fx:id="outputField" editable="false" style="-fx-background-color: #263F73;" wrapText="true" />
+                  <TextArea fx:id="outputField" editable="false" prefHeight="181.0" prefWidth="452.0" style="-fx-background-color: #263F73;" wrapText="true" />
                </children>
             </VBox>
          </children>

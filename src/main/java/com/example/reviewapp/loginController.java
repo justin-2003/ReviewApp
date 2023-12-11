@@ -87,7 +87,7 @@ public class loginController {
                 Account accountController = loader.getController();
 
                 // Set the text of emailLabel in the AccountController
-                accountController.setUsername(user);
+               // accountController.setUsername(user);
                 Parent root = FXMLLoader.load(getClass().getResource("secondary.fxml"));
                 stage = (Stage)((Node)e.getSource()).getScene().getWindow();
                 scene = new Scene(root, screenWidth, screenHeight);
@@ -117,19 +117,6 @@ public class loginController {
 
     // Get User From Database
     private boolean getUser(String user, String pass) throws ExecutionException, InterruptedException {
-
-        // Get specific document
-
-//        DocumentReference docRef = fstore.collection("Users").document("B0gEQecWBxJVvDgyHhnT");
-//        ApiFuture<DocumentSnapshot> future = docRef.get();
-//        DocumentSnapshot document = future.get();
-//
-//        if (document.exists()) {
-//            System.out.println("Document data: " + document.getData());
-//            return false;
-//        } else {
-//            System.out.println("No such document!");
-//        }
 
         // Asynchronously retrieve multiple documents
         ApiFuture<QuerySnapshot> future = fstore.collection("Users").whereEqualTo("Username", user).get();

@@ -5,7 +5,8 @@ public class reviewClass {
         private String title;
         private String description;
 
-        public reviewClass() {
+
+    public reviewClass() {
            title = "";
            description  = "";
         }
@@ -30,5 +31,4 @@ public class reviewClass {
         public void setDescription(String text) {
             this.description = text;
         }
-
 }
